@@ -3,7 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Omnifood in future Protein is a web page that does stuff."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- icon on the browser tab -->
+    <link rel="icon" href="img/faviconSmall.png" />
+    <!-- icon for favs in apple -->
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+    <!-- icons for fav in android -->
+    <link rel="manifest" href="manifest.webmanifest" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,7 +31,7 @@
     ></script>
     <script defer src="js/script.js"></script>
 
-    <title>Omnifood</title>
+    <title>Omnifood &mdash; Never cook again</title>
   </head>
   <body>
     <header class="header">
@@ -76,11 +88,18 @@
             </div>
           </div>
           <div class="hero-img-box">
-            <img
-              src="img/hero.png"
-              class="hero-img"
-              alt="Woman enjoying food, meals in storage container, and food bowlson a table"
-            />
+            <!-- this makes browser to select the image it can display -->
+            <picture>
+              <source srcset="img/hero.webp" type="image/webp" />
+              <source srcset="img/hero.png" type="image/png" />
+              <!-- the fallback needs to be provides so that is why we provide src
+but if browser is modern enough it will use previousli indicated sources  -->
+              <img
+                src="img/hero.png"
+                class="hero-img"
+                alt="Woman enjoying food, meals in storage container, and food bowlson a table"
+              />
+            </picture>
           </div>
         </div>
       </section>

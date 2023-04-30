@@ -55,6 +55,33 @@ allLinks.forEach((link) => {
   });
 });
 
+// Sticky
+
+const sectionHeroEl = document.querySelector(".section-hero");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    const ent = entries[0];
+
+    if (ent.isIntersecting === false) {
+      document.body.classList.add("sticky");
+    }
+    if (ent.isIntersecting === true) {
+      document.body.classList.remove("sticky");
+    }
+  },
+  {
+    // root=> where should this element be appearing or not,
+    // setting to null we will observe as it moves through the view port
+    root: null,
+    // event as soon as 0% of hero section is inside of the view port
+    threshold: 0,
+    // we want to tgirrer when 80px are left, needs to be in pixels
+    rootMargin: "-80px",
+  }
+);
+observer.observe(sectionHeroEl);
+
 ///////////////////////////////////////////////////////////
 // Fixing flexbox gap property missing in some Safari versions
 function checkFlexGap() {
