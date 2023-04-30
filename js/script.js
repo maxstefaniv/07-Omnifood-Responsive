@@ -23,6 +23,38 @@ btnNavEl.addEventListener("click", () => {
   headerEl.classList.toggle("nav-open");
 });
 
+// Smooth scroll animation
+
+const allLinks = document.querySelectorAll("a:link");
+
+allLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const href = link.getAttribute("href");
+
+    // scroll back to top
+    if (href === "#") {
+      // scrollTo takes you to a specific position in pixels
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+    // scroll to other links
+    if (href !== "#" && href.startsWith("#")) {
+      const sectionEl = document.querySelector(href);
+      // we dont use scroll to because we dont know the pixel position, into view is a method that gets you to that view
+      sectionEl.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+    // close mobile navigation
+    if (link.classList.contains("main-nav-link")) {
+      headerEl.classList.toggle("nav-open");
+    }
+  });
+});
+
 ///////////////////////////////////////////////////////////
 // Fixing flexbox gap property missing in some Safari versions
 function checkFlexGap() {
